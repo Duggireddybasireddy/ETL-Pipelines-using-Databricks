@@ -1,0 +1,40 @@
+CREATE TABLE IF NOT EXISTS project.dist.dist_salesData(
+    transaction_id String,
+    sold_date date,
+    customer_id String,
+    item_id String,
+    store_id String,
+    first_name String,
+    last_name String,
+    gender String,
+    marital_status String,
+    country String,
+    zip String,
+    product_name String,
+    category String,
+    brand String,
+    store_name String,
+    city String,
+    state String,
+    store_country String,
+    quantity Decimal(7,2),
+    sales_price Decimal(7,2),
+    total_sales Decimal(7,2),
+    discount_amount Decimal(7,2),
+    tax_amount Decimal(7,2),
+    net_paid Decimal(7,2),
+    net_profit Decimal(7,2)
+)
+USING delta
+TBLPROPERTIES(
+  'delta.checkpoint.writeStatsAsJson'='false',
+  'delta.checkpoint.writeStatsAsStruct'='true',
+  'delta.enableDeletionVectors' = 'true',
+  'delta.feature.deletionVectors' = 'supported',
+  'delta.feature.domainMetadata' = 'supported',
+  'delta.feature.invariants' = 'supported',
+  'delta.feature.rowTracking' = 'supported',
+  'delta.minReaderVersion' = '3',
+  'delta.minWriterVersion' = '7',
+  'delta.parquet.compression.codec' = 'zstd'
+)

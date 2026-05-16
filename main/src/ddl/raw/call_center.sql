@@ -1,4 +1,4 @@
-CREATE TABLE project.raw.hello (
+CREATE OR REPLACE TABLE project.raw.call_center (
   cc_call_center_sk INT,
   cc_call_center_id STRING,
   cc_rec_start_date DATE,

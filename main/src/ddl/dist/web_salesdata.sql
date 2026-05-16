@@ -1,0 +1,43 @@
+CREATE TABLE IF NOT EXISTS project.dist.dist_webSalesData(
+    order_number string,
+	sold_date date,
+	ship_date date,
+	billing_customer_id string,
+	billing_first_name string,
+	billing_last_name string,
+	shipping_customer_id string,
+	shipping_first_name string,
+	shipping_last_name string,
+	item_id string,
+	product_name string,
+	category string,
+	website_name string,
+	page_type string,
+	ship_mode string,
+	carrier string,
+	billing_country string,
+	billing_zip string,
+	shipping_country string,
+	shipping_zip string,
+	quantity int,
+	sales_price decimal(7,2),
+	total_sales decimal(7,2),
+	discount_amount decimal(7,2),
+	tax_amount decimal(7,2),
+	shipping_cost decimal(7,2),
+	net_paid decimal(7,2),
+	net_profit decimal(7,2)
+)
+USING delta
+TBLPROPERTIES(
+  'delta.checkpoint.writeStatsAsJson'='false', 
+  'delta.checkpoint.writeStatsAsStruct'='true',
+  'delta.enableDeletionVectors' = 'true',
+  'delta.feature.deletionVectors' = 'supported',
+  'delta.feature.domainMetadata' = 'supported',
+  'delta.feature.invariants' = 'supported' ,
+  'delta.feature.rowTracking' = 'supported' ,
+  'delta.minReaderVersion' = '3' ,
+  'delta.minWriterVersion' = '7' ,
+  'delta.parquet.compression.codec' = 'zstd'
+)
